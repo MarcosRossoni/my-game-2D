@@ -10,19 +10,24 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable {
 
     //Screen Settings
-    final static int ORIGINAL_TITLE_SIZE = 16;
-    final static int SCALE = 3;
-    final static int MAX_SCREEN_COL = 16;
-    final static int MAX_SCREEN_ROW = 12;
+    private static final int ORIGINAL_TITLE_SIZE = 16;
+    private static final int SCALE = 3;
+    private static final int MAX_SCREEN_COL = 16;
+    private static final int MAX_SCREEN_ROW = 12;
 
     //FPS
-    final static int FPS = 60;
+    private static final int FPS = 60;
 
-    Screen screen = new Screen(ORIGINAL_TITLE_SIZE, SCALE, MAX_SCREEN_COL, MAX_SCREEN_ROW);
+    //WORLD SETTINGS
+    private static final int MAX_WORLD_COL = 50;
+    private static final int MAX_WORLD_ROW = 50;
+
+    Screen screen = new Screen(ORIGINAL_TITLE_SIZE, SCALE, MAX_SCREEN_COL, MAX_SCREEN_ROW, MAX_WORLD_COL, MAX_WORLD_ROW);
     TileManager tileManager = new TileManager(this, screen);
     KeyHundler keyHundler = new KeyHundler();
     Thread gameThread;
-    Player player = new Player(this, keyHundler, screen);
+    public CollisionChecker collisionChecker = new CollisionChecker(this);
+    public Player player = new Player(this, keyHundler, screen);
 
     public GamePanel() {
 
@@ -71,7 +76,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        player.update();
+        player.update(ORIGINAL_TITLE_SIZE, SCALE);
     }
 
     public void paintComponent(Graphics g) {

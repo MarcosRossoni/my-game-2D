@@ -1,18 +1,41 @@
 package entity;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Entity {
+public class Entity extends Screen{
 
-    private int worldX, worldY;
+    private int worldX;
+
+    private int worldY;
+
     private int speed;
 
-    private BufferedImage up1, up2, down1, down2, right1, right2, left1, left2;
+    private BufferedImage up1;
+
+    private BufferedImage up2;
+
+    private BufferedImage down1;
+
+    private BufferedImage down2;
+
+    private BufferedImage right1;
+
+    private BufferedImage right2;
+
+    private BufferedImage left1;
+
+    private BufferedImage left2;
+
     private String direction;
 
     private int spriteCounter = 0;
+
     private int spritNumber = 1;
 
+    private Rectangle solidArea;
+
+    private boolean colisionOn = false;
 
     public int getWorldX() {
         return worldX;
@@ -124,5 +147,21 @@ public class Entity {
 
     public void setSpritNumber(int spritNumber) {
         this.spritNumber = spritNumber;
+    }
+
+    public Rectangle getSolidArea() {
+        return solidArea;
+    }
+
+    public void setSolidArea(Rectangle solidArea) {
+        this.solidArea = solidArea;
+    }
+
+    public boolean isColisionOn() {
+        return colisionOn;
+    }
+
+    public void setColisionOn(boolean colisionOn) {
+        this.colisionOn = colisionOn;
     }
 }

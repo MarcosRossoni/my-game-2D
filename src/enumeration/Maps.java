@@ -2,7 +2,9 @@ package enumeration;
 
 public enum Maps {
 
-    MAP_01(1, "/maps/map01.txt");
+    MAP_01(1, "/maps/map01.txt"),
+
+    MAP_02(2, "/maps/world01.txt");
 
     private final int idMap;
     private final String dsPathMap;

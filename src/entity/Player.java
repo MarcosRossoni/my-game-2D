@@ -20,11 +20,16 @@ public class Player extends Entity {
         this.gamePanel = gamePanel;
         this.keyHundler = keyHundler;
 
+        setSolidArea(new Rectangle());
+        getSolidArea().x = 8;
+        getSolidArea().y = 16;
+        getSolidArea().width = 32;
+        getSolidArea().height = 32;
         setDefaltValues(screen);
         getPlayerImage();
     }
 
-    public void update() {
+    public void update(int originalTitle, int scale) {
 
         if (keyHundler.upPressed || keyHundler.downPressed ||
                 keyHundler.leftPressed || keyHundler.rightPressed) {
@@ -44,6 +49,9 @@ public class Player extends Entity {
                 direction = "right";
                 x = getWorldX() + getSpeed();
             }
+
+            setColisionOn(false);
+            gamePanel.collisionChecker.checkTile(this, originalTitle, scale);
             setWorldY(y);
             setWorldX(x);
             setDirection(direction);
@@ -72,6 +80,7 @@ public class Player extends Entity {
     }
 
     //--
+
     private void setDefaltValues(Screen screen) {
         setWorldX(screen.getTitleSize() * 23);
         setWorldY(screen.getTitleSize() * 21);

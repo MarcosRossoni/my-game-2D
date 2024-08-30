@@ -16,10 +16,18 @@ public class Screen {
 
     private int maxScreenRow;
 
+    private int maxWorldCol;
+
+    private int maxWorldRow;
+
+    private int worldWidth;
+
+    private int worldHeight;
+
     public Screen() {
     }
 
-    public Screen(int originalTitleSize, int scale, int maxCol, int maxRow) {
+    public Screen(int originalTitleSize, int scale, int maxCol, int maxRow, int maxWorldCol, int maxWorldRow) {
         this.titleSize = originalTitleSize * scale;
         this.screenWidth = this.titleSize * maxCol;
         this.screenHeight = this.titleSize * maxRow;
@@ -27,6 +35,10 @@ public class Screen {
         this.maxScreenRow = maxRow;
         this.screenX = this.screenWidth / 2 - (this.titleSize / 2);
         this.screenY = this.screenHeight / 2 - (this.titleSize / 2);
+        this.worldWidth = this.titleSize * maxWorldCol;
+        this.worldHeight = this.titleSize * maxWorldRow;
+        this.maxWorldCol = maxWorldCol;
+        this.maxWorldRow = maxWorldRow;
     }
 
     public int getTitleSize() {
@@ -83,5 +95,37 @@ public class Screen {
 
     public void setScreenY(int screenY) {
         this.screenY = screenY;
+    }
+
+    public int getWorldHeight() {
+        return worldHeight;
+    }
+
+    public void setWorldHeight(int worldHeight) {
+        this.worldHeight = worldHeight;
+    }
+
+    public int getWorldWidth() {
+        return worldWidth;
+    }
+
+    public void setWorldWidth(int worldWidth) {
+        this.worldWidth = worldWidth;
+    }
+
+    public int getMaxWorldRow() {
+        return maxWorldRow;
+    }
+
+    public void setMaxWorldRow(int maxWorldRow) {
+        this.maxWorldRow = maxWorldRow;
+    }
+
+    public int getMaxWorldCol() {
+        return maxWorldCol;
+    }
+
+    public void setMaxWorldCol(int maxWorldCol) {
+        this.maxWorldCol = maxWorldCol;
     }
 }
